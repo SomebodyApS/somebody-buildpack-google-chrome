@@ -104,9 +104,11 @@ fi
 
 topic "Installing Google Chrome from the $channel channel."
 
+echo
 
 if [ -f $ENV_DIR/GOOGLE_CHROME_SPECIFIC_VERSION ]; then
-  the_version=$(cat $ENV_DIR/GOOGLE_CHROME_CHANNEL)
+  the_version=$(cat $ENV_DIR/GOOGLE_CHROME_SPECIFIC_VERSION)
+  echo "GOT request for specific Google Chrome version: ${the_version}"
   PACKAGES="$PACKAGES https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${the_version}-1_amd64.deb"
 else
   PACKAGES="$PACKAGES https://dl.google.com/linux/direct/google-chrome-${channel}_current_amd64.deb"
