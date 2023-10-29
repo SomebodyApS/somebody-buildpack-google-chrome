@@ -5,7 +5,7 @@
 set -e
 
 # debug
-set -x
+#set -x
 
 # parse and derive params
 BUILD_DIR=$1
@@ -129,7 +129,7 @@ apt-get $APT_OPTIONS update | indent
 for PACKAGE in $PACKAGES; do
   if [[ $PACKAGE == *deb ]]; then
     PACKAGE_NAME=$(basename $PACKAGE .deb)
-    PACKAGE_NAME="google-chrome-stable_GOOGLE_CHROME_SPECIFIC_VERSION_amd64.deb"
+    PACKAGE_NAME="google-chrome-stable_current_amd64.deb"
     topic "Somebody: PACKAGE_NAME = ${PACKAGE_NAME}"
     PACKAGE_FILE=$APT_CACHE_DIR/archives/$PACKAGE_NAME.deb
     topic "Somebody: PACKAGE_FILE = ${PACKAGE_FILE}"
