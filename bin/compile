@@ -129,7 +129,10 @@ apt-get $APT_OPTIONS update | indent
 for PACKAGE in $PACKAGES; do
   if [[ $PACKAGE == *deb ]]; then
     PACKAGE_NAME=$(basename $PACKAGE .deb)
+    PACKAGE_NAME="google-chrome-stable_GOOGLE_CHROME_SPECIFIC_VERSION_amd64.deb"
+    topic "Somebody: PACKAGE_NAME = ${PACKAGE_NAME}"
     PACKAGE_FILE=$APT_CACHE_DIR/archives/$PACKAGE_NAME.deb
+    topic "Somebody: PACKAGE_FILE = ${PACKAGE_FILE}"
 
     topic "Fetching $PACKAGE"
     curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
