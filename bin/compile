@@ -111,7 +111,7 @@ if [ -f $ENV_DIR/GOOGLE_CHROME_SPECIFIC_VERSION ]; then
   echo "GOT REQUEST FOR specific Google Chrome version: ${the_version}"
   thepack= "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${the_version}-1_amd64.deb"
   echo "GOT REQUEST FOR - package: ${thepack}"
-  PACKAGES="$PACKAGES thepack"
+  PACKAGES="$PACKAGES ${thepack}"
 else
   PACKAGES="$PACKAGES https://dl.google.com/linux/direct/google-chrome-${channel}_current_amd64.deb"
 fi
@@ -130,7 +130,7 @@ apt-get $APT_OPTIONS update | indent
 
 for PACKAGE in $PACKAGES; do
   if [[ $PACKAGE == *deb ]]; then
-    PACKAGE_NAME=$(basename $PACKAGE .deb)
+    #PACKAGE_NAME=$(basename $PACKAGE .deb)
     PACKAGE_NAME="google-chrome-stable_current_amd64.deb"
     topic "Somebody: PACKAGE_NAME = ${PACKAGE_NAME}"
     PACKAGE_FILE=$APT_CACHE_DIR/archives/$PACKAGE_NAME.deb
